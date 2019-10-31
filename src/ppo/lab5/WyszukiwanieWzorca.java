@@ -10,6 +10,7 @@ public class WyszukiwanieWzorca {
         System.out.println(wynik);
     }
 
+    // W komentarzach - dla porównania - znajduje się wersja w składni Pythona
     public static int znajdźWzorzec(String tekst, String wzorzec) {
 //      for i in range(0, len(tekst)-len(wzorzec)+1):
         for (int i = 0; i < tekst.length() - wzorzec.length() + 1; ++i) {
