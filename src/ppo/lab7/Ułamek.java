@@ -32,7 +32,7 @@ public class Ułamek {
 
     public Ułamek dodaj(Ułamek u2) {
         return new Ułamek(
-                licznik*u2.mianownik + u2.licznik*mianownik,
+                licznik * u2.mianownik + u2.licznik * mianownik,
                 mianownik * u2.mianownik
         );
     }

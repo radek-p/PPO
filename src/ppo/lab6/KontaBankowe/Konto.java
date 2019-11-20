@@ -1,15 +1,25 @@
 package ppo.lab6.KontaBankowe;
 
 public class Konto {
-    int numer;
-    int stanKonta;
+    private int numer;
+    private int stanKonta;
 
-    Konto(int numer) {
+    static private int sumaStanówWszystkichKont = 0;
+
+    public static int podajStanWszystkich() {
+        return sumaStanówWszystkichKont;
+    }
+
+    public Konto(int numer) {
         this.numer = numer;
         stanKonta = 0;
     }
 
-    void wypiszStan() {
+    public int podajStanKonta() {
+        return stanKonta;
+    }
+
+    public void wypiszStan() {
         System.out.println(
                 String.format("nummer konta: %d, jego stan: %d", numer, stanKonta)
         );
@@ -21,8 +31,11 @@ public class Konto {
 
     public void wypłać(int kwotaTransakcji) {
         stanKonta -= kwotaTransakcji;
+        sumaStanówWszystkichKont -= kwotaTransakcji;
     }
+
     public void wpłać(int kwotaTransakcji) {
         stanKonta += kwotaTransakcji;
+        sumaStanówWszystkichKont += kwotaTransakcji;
     }
 }
