@@ -14,6 +14,19 @@ public class OperatorPlus extends Operator {
     public String naNapis() {
         String n1 = lewe.naNapis();
         String n2 = prawe.naNapis();
-        return String.format("(%s + %s)", n1, n2);
+        return String.format("%s + %s", n1, n2);
+    }
+
+    @Override
+    public Wyrażenie pochodna() {
+        return new OperatorPlus(
+                lewe.pochodna(),
+                prawe.pochodna()
+        );
+    }
+
+    @Override
+    protected boolean czyPotrzebaNawiasu() {
+        return true;
     }
 }

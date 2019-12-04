@@ -10,4 +10,9 @@ public class Zmienna extends Wyrażenie {
     public String naNapis() {
         return "x";
     }
+
+    @Override
+    public Wyrażenie pochodna() {
+        return new Liczba(1);
+    }
 }

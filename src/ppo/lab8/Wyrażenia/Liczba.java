@@ -16,4 +16,9 @@ public class Liczba extends Wyrażenie {
     public String naNapis() {
         return String.format("%f", wartość);
     }
+
+    @Override
+    public Wyrażenie pochodna() {
+        return new Liczba(0);
+    }
 }
