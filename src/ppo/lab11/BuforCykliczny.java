@@ -28,13 +28,39 @@ public class BuforCykliczny {
         }
     }
 
-    int wyjmijZKońca() {
-        if (długość == 0) {
-            throw new IllegalArgumentException("Empty buffer!");
-        }
+    public void wstawNaKoniec(int[] t) {
+        for (int element : t)
+            wstawNaKoniec(element);
+    }
+
+    public int wyjmijZKońca() {
+//        if (długość == 0) {
+//            throw new EmptyBufferException();
+//        }
         int indeks = (poczatek + długość - 1) % tablica.length;
         długość -= 1;
         return tablica[indeks];
+    }
+
+    public void wstawNaPocztek(int element) {
+        poczatek = (poczatek + tablica.length - 1) % tablica.length;
+        tablica[poczatek] = element;
+        if (długość < tablica.length)
+            długość += 1;
+    }
+
+    public int wyjmijZPoczatku() {
+//        if (długość == 0) {
+//            throw new EmptyBufferException();
+//        }
+        int wynik = tablica[poczatek];
+        długość -= 1;
+        poczatek = (poczatek + 1) % tablica.length;
+        return wynik;
+    }
+
+    public int długość() {
+        return długość;
     }
 }
 
