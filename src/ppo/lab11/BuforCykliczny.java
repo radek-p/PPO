@@ -42,11 +42,16 @@ public class BuforCykliczny {
         return tablica[indeks];
     }
 
-    public void wstawNaPocztek(int element) {
+    public void wstawNaPoczatek(int element) {
         poczatek = (poczatek + tablica.length - 1) % tablica.length;
         tablica[poczatek] = element;
         if (długość < tablica.length)
             długość += 1;
+    }
+
+    public void wstawNaPoczatek(int[] t) {
+        for (int i = t.length - 1; i >= 0; i--)
+            wstawNaKoniec(t[i]);
     }
 
     public int wyjmijZPoczatku() {
@@ -61,6 +66,17 @@ public class BuforCykliczny {
 
     public int długość() {
         return długość;
+    }
+
+    @Override
+    public String toString() {
+        String wynik = "";
+        // pierwszy ma indeks: poczatek
+        // wszystkich jest: długość
+        for (int i = poczatek; i < poczatek + długość; i++) {
+            wynik += String.format("%d, ", tablica[i % tablica.length]);
+        }
+        return wynik;
     }
 }
 
