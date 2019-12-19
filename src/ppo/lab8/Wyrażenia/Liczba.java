@@ -21,4 +21,9 @@ public class Liczba extends Wyrażenie {
     public Wyrażenie pochodna() {
         return new Liczba(0);
     }
+
+    @Override
+    protected boolean czyJestZmienna() {
+        return false;
+    }
 }

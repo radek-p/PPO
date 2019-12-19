@@ -11,29 +11,33 @@ public class OperatorRazy extends Operator {
     }
 
     @Override
-    public String naNapis() {
-        String n1 = lewe.naNapis();
-        String n2 = prawe.naNapis();
-        if (lewe.czyPotrzebaNawiasu()) {
-            n1 = "(" + n1 + ")";
-        }
-        if (prawe.czyPotrzebaNawiasu()) {
-            n2 = "(" + n2 + ")";
-        }
-        return String.format("%s * %s", n1, n2);
+    protected String symbol() {
+        return "*";
     }
 
     @Override
     public Wyrażenie pochodna() {
+        // d/dx f(x) * g(x)
         return new OperatorPlus(
-                new OperatorRazy(
-                        lewe.pochodna(),
-                        prawe
-                ),
-                new OperatorRazy(
-                        lewe,
-                        prawe.pochodna()
-                )
+                new OperatorRazy(lewe.pochodna(), prawe),
+                new OperatorRazy(lewe, prawe.pochodna())
         );
+    }
+
+    @Override
+    protected int priorytet() {
+        return 9;
+    }
+
+    @Override
+    public Wyrażenie uprość() {
+        if (!czyJestZmienna()) {
+            return new Liczba(this.oblicz(0));
+        } else {
+            return new OperatorRazy(
+                    lewe.uprość(),
+                    prawe.uprość()
+            );
+        }
     }
 }

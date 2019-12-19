@@ -15,4 +15,9 @@ public class Zmienna extends Wyrażenie {
     public Wyrażenie pochodna() {
         return new Liczba(1);
     }
+
+    @Override
+    protected boolean czyJestZmienna() {
+        return true;
+    }
 }

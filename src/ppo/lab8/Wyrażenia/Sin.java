@@ -14,8 +14,8 @@ public class Sin extends Funkcja1 {
     }
 
     @Override
-    public String naNapis() {
-        return String.format("sin(%s)", argument.naNapis());
+    protected String nazwa() {
+        return "sin";
     }
 
     @Override
@@ -25,4 +25,14 @@ public class Sin extends Funkcja1 {
                 argument.pochodna()
         );
     }
+
+    @Override
+    public Wyrażenie uprość() {
+        if (!czyJestZmienna()) {
+            return new Liczba(this.oblicz(0));
+        } else {
+            return new Sin(argument.uprość());
+        }
+    }
+
 }

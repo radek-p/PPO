@@ -9,10 +9,12 @@ public class TestWyrażenia {
         Wyrażenie w4 = new Liczba(11);
         Wyrażenie w5 = new OperatorRazy(new OperatorMinus(w4, w3), new Liczba(2));
 
-        Wyrażenie w6 = new Sin(w5);
+//        Wyrażenie w6 = new Sin(w5);
 
-        System.out.println(w6.naNapis());
+        System.out.println(w5.naNapis());
+        System.out.println(w5.pochodna().uprość().naNapis());
+        System.out.println(w5.pochodna().naNapis());
         System.out.println("Dla x = 10 wyrażenie to ma wartość:");
-        System.out.println(w6.oblicz(10));
+        System.out.println(w5.pochodna().oblicz(10));
     }
 }

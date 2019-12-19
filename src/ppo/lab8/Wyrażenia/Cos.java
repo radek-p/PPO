@@ -9,13 +9,13 @@ public class Cos extends Funkcja1 {
     }
 
     @Override
-    public double oblicz(double x) {
-        return cos(argument.oblicz(x));
+    protected String nazwa() {
+        return "cos";
     }
 
     @Override
-    public String naNapis() {
-        return String.format("cos(%s)", argument.naNapis());
+    public double oblicz(double x) {
+        return cos(argument.oblicz(x));
     }
 
     @Override
@@ -24,5 +24,13 @@ public class Cos extends Funkcja1 {
                 new OperatorRazy(new Liczba(-1), new Sin(argument)),
                 argument.pochodna()
         );
+    }
+    @Override
+    public Wyrażenie uprość() {
+        if (!czyJestZmienna()) {
+            return new Liczba(this.oblicz(0));
+        } else {
+            return new Cos(argument.uprość());
+        }
     }
 }

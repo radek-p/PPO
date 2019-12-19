@@ -7,7 +7,13 @@ abstract public class Wyrażenie {
 
     public abstract Wyrażenie pochodna();
 
-    protected boolean czyPotrzebaNawiasu() {
-        return false;
+    protected int priorytet() {
+        return 10;
+    }
+
+    abstract protected boolean czyJestZmienna();
+
+    public Wyrażenie uprość() {
+        return this;
     }
 }
